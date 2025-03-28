@@ -15,7 +15,7 @@ export const BasketItemDemo: StoryObj<typeof BasketItem> = {
     sum: 1,
     category: 'Category 1',
     name: 'item 1',
-    desc: 'Kypili item1. pokypka pokypochka!',
+    desc: 'Kypili item1. Pokypka pokypochka!',
     date: '09.08.2003',
   },
 };
