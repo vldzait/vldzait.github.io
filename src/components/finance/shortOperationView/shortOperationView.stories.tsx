@@ -15,6 +15,6 @@ export const ShortOperationViewDemo: StoryObj<typeof ShortOperationView> = {
     sum: 199,
     category: 'Category 1',
     name: 'Operaton 1',
-    desc: 'Pokypka sigaretki. trata denyak ne razymnai',
+    desc: 'Pokypka sigaretki. trata denyak ne razymnai!',
   },
 };
