@@ -1,13 +1,12 @@
-import { Operation } from '../../types/Operation.type';
-import { Category } from '../../types/Category.type';
-import { Product } from '../../types/Product.type';
+import { Operation } from 'src/types/Operation.type';
+import { Category } from 'src/types/Category.type';
+import { Product } from 'src/types/Product.type';
 
 /**
  * Создает случайный продукт (Product).
  * Принимает дату создания (строка)
  * */
 export const createRandomProduct = (): Product => {
-  alert('1');
   return {
     id: genereteID(),
     name: genereteName('Продукт'),
@@ -47,12 +46,12 @@ const genereteID = (): string => Math.random().toString(36).substring(2, 9);
  * Создает случайный name.
  * Принимает тип для чего создается name (строка)
  * */
-const genereteName = (type: string): string => `${type} ${Math.random()}`;
+const genereteName = (type: string): string => `${type} ${Math.floor(Math.random() * 101)}`;
 
 /**
  * Создает случайную ссылку на фото.
  * */
-const generetePhotoLink = (): string => `www.random.com/${Math.random()}`;
+const generetePhotoLink = (): string => `https://i.pinimg.com/736x/4a/ad/a7/4aada7610c2007931039b3c6a26e63fd.jpg`;
 
 /**
  * Создает случайное описание.

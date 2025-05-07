@@ -1,8 +1,7 @@
 import React, { FC } from 'react';
-import cn from 'clsx';
-import './button.css';
+import styles from './addProduct.module.scss';
 
-interface ButtonProps {
+export interface AddProductProps {
   primary?: boolean;
   backgroundColor?: string | null;
   size?: string;
@@ -10,13 +9,11 @@ interface ButtonProps {
   onClick: () => void;
 }
 
-export const Button: FC<ButtonProps> = ({ onClick, primary, backgroundColor, size, label, ...props }) => {
-  const mode = primary ? 'storybook-button--primary' : 'storybook-button--secondary';
-
+const AddProduct: FC<AddProductProps> = ({ onClick, primary, backgroundColor, size, label, ...props }) => {
   return (
     <button
       type="button"
-      className={cn('storybook-button', `storybook-button--${size}`, mode)}
+      className={styles.storybookButton}
       style={{ backgroundColor: backgroundColor || 'green' }}
       onClick={onClick}
       {...props}
@@ -25,3 +22,5 @@ export const Button: FC<ButtonProps> = ({ onClick, primary, backgroundColor, siz
     </button>
   );
 };
+
+export default AddProduct;

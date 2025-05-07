@@ -1,27 +1,22 @@
 import React from 'react';
 import styles from './shortOperationView.module.scss';
+import { Operation } from 'src/types/Operation.type';
 
-export interface ShortOperationViewProps {
-  sum: number;
-  category: string;
-  name: string;
-  desc: string;
-}
-
-const ShortOperationView: React.FC<ShortOperationViewProps> = ({ sum, category, name, desc }) => {
+const ShortOperationView: React.FC<Operation> = ({ amount, category, name, desc }) => {
   return (
     <div className={styles.operationItem}>
+      <img className={styles.photo} src={category?.photo} />
       <span className={styles.property}>
         <p className={styles.name}>Наименование</p>
         <p className={styles.value}>{name}</p>
       </span>
       <span className={styles.property}>
         <p className={styles.name}>Сумма</p>
-        <p className={styles.value}>{sum}</p>
+        <p className={styles.value}>{amount}</p>
       </span>
       <span className={styles.property}>
         <p className={styles.name}>Категория</p>
-        <p className={styles.value}>{category}</p>
+        <p className={styles.value}>{category?.name}</p>
       </span>
       <span className={styles.property}>
         <p className={styles.name}>Описание</p>
