@@ -14,13 +14,17 @@ const AdditionalComponent: React.FC = () => {
     setIsModalOpen(true);
   };
 
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
+  };
+
   return (
     <>
       <div className={styles.content}>
         <input value={message} onChange={handleMessageChange} />
         <button onClick={handleOpenModal}>{isModalOpen ? 'Скрыть' : 'Отобразить'}</button>
       </div>
-      <Modal visible={isModalOpen}>
+      <Modal visible={isModalOpen} onClose={() => handleCloseModal()}>
         <div>{message}</div>
       </Modal>
     </>

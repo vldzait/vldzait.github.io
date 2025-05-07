@@ -1,32 +1,16 @@
 import React from 'react';
 import styles from './shortProductView.module.scss';
 import BasketBtn from '../basketBtn/BasketBtn';
+import { Product } from 'src/types/Product.type';
 
-export interface ShortProductViewProps {
-  price: number;
-  photo: string;
-  name: string;
-  desc: string;
-}
-
-const ShortProductView: React.FC<ShortProductViewProps> = ({ price, photo, name, desc }) => {
+const ShortProductView: React.FC<Product> = ({ price, photo, name, desc }) => {
   return (
     <div className={styles.operationItem}>
+      <img className={styles.photo} src={photo} />
+      <h3 className={styles.name}>{name}</h3>
       <span className={styles.property}>
-        <p className={styles.name}>Фото</p>
-        <p className={styles.value}>{photo}</p>
-      </span>
-      <span className={styles.property}>
-        <p className={styles.name}>Наименование</p>
-        <p className={styles.value}>{name}</p>
-      </span>
-      <span className={styles.property}>
-        <p className={styles.name}>Сумма</p>
-        <p className={styles.value}>{price}</p>
-      </span>
-      <span className={styles.property}>
-        <p className={styles.name}>Описание</p>
-        <p className={styles.value + ' ' + styles.valueEllipsis}>{desc}</p>
+        <p className={styles.label}>Цена</p>
+        <p className={styles.value}>{price} руб.</p>
       </span>
       <BasketBtn count={0} />
     </div>
