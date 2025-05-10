@@ -9,8 +9,8 @@ export type OperationListProps = {
 const OperationList: React.FC<OperationListProps> = ({ operations }) => {
   return (
     <div className={styles.operationList}>
-      {operations?.map((operation: Operation, operationIndex: number) => {
-        return <ShortOperationView key={'operationItem_' + operationIndex} {...operation} />;
+      {operations?.map((operation: Operation) => {
+        return <ShortOperationView key={'operationItem_' + operation.id} {...operation} />;
       })}
     </div>
   );

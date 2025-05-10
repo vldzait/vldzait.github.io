@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import styles from './additionalComponent.module.scss';
 import Modal from '../modal/Modal';
+import { Button } from 'src/shared/button/Button';
 
 const AdditionalComponent: React.FC = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -22,7 +23,7 @@ const AdditionalComponent: React.FC = () => {
     <>
       <div className={styles.content}>
         <input value={message} onChange={handleMessageChange} />
-        <button onClick={handleOpenModal}>{isModalOpen ? 'Скрыть' : 'Отобразить'}</button>
+        <Button onClick={handleOpenModal} label={isModalOpen ? 'Скрыть' : 'Отобразить'} />
       </div>
       <Modal visible={isModalOpen} onClose={() => handleCloseModal()}>
         <div>{message}</div>
