@@ -39,8 +39,8 @@ const ProductList: React.FC<ProductListProps> = ({ products }) => {
   return (
     <>
       <div className={styles.list}>
-        {productsArr?.map((product: Product, productIndex: number) => {
-          return <ShortProductView key={'operationItem_' + productIndex} {...product} />;
+        {productsArr?.map((product: Product) => {
+          return <ShortProductView key={product.id} {...product} />;
         })}
         <div ref={targetElement}></div>
       </div>
