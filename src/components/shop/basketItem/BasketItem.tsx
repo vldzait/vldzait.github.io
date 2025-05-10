@@ -1,5 +1,6 @@
 import React from 'react';
 import styles from './basketItem.module.scss';
+import { Button } from 'src/shared/button/Button';
 
 export interface BasketItemProps {
   sum: number;
@@ -32,7 +33,7 @@ const BasketItem: React.FC<BasketItemProps> = ({ sum, category, name, desc, date
         <p className={styles.name}>Описание</p>
         <p className={styles.value}>{desc}</p>
       </span>
-      <button>Удалить</button>
+      <Button label={`Удалить`} />
     </div>
   );
 };
