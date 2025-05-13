@@ -3,7 +3,7 @@ import styles from './shortProductView.module.scss';
 import BasketBtn from '../basketBtn/BasketBtn';
 import { Product } from 'src/types/Product.type';
 
-const ShortProductView: React.FC<Product> = ({ price, photo, name, desc }) => {
+const ShortProductView: React.FC<Product> = ({ price, photo, name }) => {
   return (
     <div className={styles.operationItem}>
       <img className={styles.photo} src={photo} />

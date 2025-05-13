@@ -1,5 +1,6 @@
 import React from 'react';
 import styles from './fullOperationView.module.scss';
+import { Button } from 'src/shared/button/Button';
 
 export interface FullOperationViewProps {
   sum: number;
@@ -32,7 +33,7 @@ const FullOperationView: React.FC<FullOperationViewProps> = ({ sum, category, na
         <p className={styles.name}>Описание</p>
         <p className={styles.value}>{desc}</p>
       </span>
-      <button>Редактировать</button>
+      <Button label={`редактировать`} />
     </div>
   );
 };
