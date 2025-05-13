@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from './fullOperationView.module.scss';
-import { Button } from 'src/shared/button/Button';
+import { Button } from '../../button/Button';
 
 export interface FullOperationViewProps {
   sum: number;

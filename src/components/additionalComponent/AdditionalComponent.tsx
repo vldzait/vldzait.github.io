@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import styles from './additionalComponent.module.scss';
 import Modal from '../modal/Modal';
-import { Button } from 'src/shared/button/Button';
+import { Button } from '../button/Button';
 
 const AdditionalComponent: React.FC = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
