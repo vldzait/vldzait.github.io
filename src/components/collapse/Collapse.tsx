@@ -1,9 +1,9 @@
-import React, { useCallback, useEffect, useLayoutEffect, useRef, useState } from 'react';
+import React, { ReactNode, useCallback, useEffect, useLayoutEffect, useRef, useState } from 'react';
 import styles from './collapse.module.scss';
 
 export type CollapseProps = {
   isOpen: boolean;
-  children: React.ReactNode;
+  children: ReactNode;
   duration?: number;
 };
 
@@ -11,6 +11,7 @@ const Collapse: React.FC<CollapseProps> = ({ isOpen, children, duration = 100 })
   const [shouldRender, setShouldRender] = useState(isOpen);
   const [contentHeight, setContentHeight] = useState<string | number>(isOpen ? 'auto' : 0);
   const contentRef = useRef<HTMLDivElement>(null);
+  const animationFrameId = useRef<number>();
 
   useLayoutEffect(() => {
     setShouldRender(isOpen);
@@ -21,7 +22,7 @@ const Collapse: React.FC<CollapseProps> = ({ isOpen, children, duration = 100 })
 
     if (isOpen) {
       setContentHeight(0);
-      requestAnimationFrame(() => {
+      animationFrameId.current = requestAnimationFrame(() => {
         if (contentRef.current) {
           setContentHeight(contentRef.current.scrollHeight);
         }
@@ -29,11 +30,17 @@ const Collapse: React.FC<CollapseProps> = ({ isOpen, children, duration = 100 })
     } else {
       if (contentRef.current) {
         setContentHeight(contentRef.current.scrollHeight);
-        requestAnimationFrame(() => {
+        animationFrameId.current = requestAnimationFrame(() => {
           setContentHeight(0);
         });
       }
     }
+
+    return () => {
+      if (animationFrameId.current) {
+        cancelAnimationFrame(animationFrameId.current);
+      }
+    };
   }, [isOpen, shouldRender]);
 
   const handleTransitionEnd = () => {
@@ -53,7 +60,7 @@ const Collapse: React.FC<CollapseProps> = ({ isOpen, children, duration = 100 })
 
   // Обновляем высоту при изменении содержимого
   useEffect(() => {
-    if (!shouldRender) return;
+    if (!shouldRender) return null;
 
     const resizeObserver = new ResizeObserver(() => {
       updateHeight();
@@ -65,6 +72,9 @@ const Collapse: React.FC<CollapseProps> = ({ isOpen, children, duration = 100 })
 
     return () => {
       resizeObserver.disconnect();
+      if (animationFrameId.current) {
+        cancelAnimationFrame(animationFrameId.current);
+      }
     };
   }, [shouldRender, updateHeight, children]);
 
