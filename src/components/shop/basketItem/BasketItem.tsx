@@ -33,7 +33,12 @@ const BasketItem: React.FC<BasketItemProps> = ({ sum, category, name, desc, date
         <p className={styles.name}>Описание</p>
         <p className={styles.value}>{desc}</p>
       </span>
-      <Button label={`Удалить`} />
+      <Button
+        label={`Удалить`}
+        onClick={() => {
+          console.log('click');
+        }}
+      />
     </div>
   );
 };

@@ -7,7 +7,7 @@ interface ButtonProps {
   backgroundColor?: string | null;
   size?: string;
   label: string;
-  onClick?: () => void;
+  onClick: () => void;
 }
 
 export const Button: FC<ButtonProps> = ({ onClick, primary, backgroundColor, size, label, ...props }) => {

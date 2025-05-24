@@ -33,7 +33,12 @@ const FullOperationView: React.FC<FullOperationViewProps> = ({ sum, category, na
         <p className={styles.name}>Описание</p>
         <p className={styles.value}>{desc}</p>
       </span>
-      <Button label={`редактировать`} />
+      <Button
+        label={`редактировать`}
+        onClick={() => {
+          console.log('click');
+        }}
+      />
     </div>
   );
 };
