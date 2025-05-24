@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from './basketItem.module.scss';
-import { Button } from 'src/shared/button/Button';
+import { Button } from '../../button/Button';
 
 export interface BasketItemProps {
   sum: number;
